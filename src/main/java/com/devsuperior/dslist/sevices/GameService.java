@@ -1,8 +1,10 @@
 package com.devsuperior.dslist.sevices;
 
 import com.devsuperior.dslist.dto.GameDTO;
+import com.devsuperior.dslist.dto.GameListDTO;
 import com.devsuperior.dslist.dto.GameMinDto;
 import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.entities.GameList;
 import com.devsuperior.dslist.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,8 +19,8 @@ import java.util.function.Function;
 public class GameService {
     @Autowired
     private GameRepository repository;
-@Transactional(readOnly = true)
-    public GameDTO findbyId(Long id) {
+    @Transactional(readOnly = true)
+    public GameDTO findById(Long id) {
         Game result = repository.findById(id).get();
         return new GameDTO(result);
     }
@@ -27,4 +29,6 @@ public class GameService {
         List<Game> result = repository.findAll();
         return result.stream().map(GameMinDto::new).toList();
     }
+
+
 }

@@ -22,7 +22,7 @@ public class GameController {
     private GameService service;
     @GetMapping(value = "/{id}")
     public GameDTO findById(@PathVariable Long id) {
-        return service.findbyId(id);
+        return service.findById(id);
     }
     @GetMapping
     public List<GameMinDto> findAll() {
